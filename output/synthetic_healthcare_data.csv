@@ -1,0 +1,16 @@
+Last Name,First Name,SSN,DOB,Gender,Relationship,Address,City,State,Zip Code,Medicare Member ID
+Thompson,James,452910384,1982-05-14,Male,Subscriber,124 Oak Street,Springfield,IL,62704,
+Thompson,Sarah,452910385,1984-11-20,Female,Spouse,124 Oak Street,Springfield,IL,62704,
+Thompson,Emily,452910386,2012-03-10,Female,Child,124 Oak Street,Springfield,IL,62704,
+Thompson,Michael,452910387,2015-07-22,Male,Child,124 Oak Street,Springfield,IL,62704,
+Rodriguez,Carlos,319204857,1978-09-02,Male,Subscriber,782 Maple Avenue,Austin,TX,78701,
+Rodriguez,Elena,319204858,1980-01-15,Female,Spouse,782 Maple Avenue,Austin,TX,78701,
+Rodriguez,Mateo,319204859,2008-11-30,Male,Child,782 Maple Avenue,Austin,TX,78701,
+Chen,Wei,552109382,1955-04-12,Male,Subscriber,455 Pine Court,Seattle,WA,98101,1EG4RT5JK92
+Chen,Mei,552109383,1957-08-19,Female,Spouse,455 Pine Court,Seattle,WA,98101,2HJ8KL3PP41
+Chen,David,552109384,1985-12-05,Male,Child,455 Pine Court,Seattle,WA,98101,
+Chen,Lily,552109385,1988-03-24,Female,Child,455 Pine Court,Seattle,WA,98101,
+Miller,Robert,112938475,1990-10-10,Male,Subscriber,901 Birch Drive,Denver,CO,80202,
+Miller,Jessica,112938476,1991-05-05,Female,Spouse,901 Birch Drive,Denver,CO,80202,
+Miller,Sam,112938477,2019-12-12,Non-binary,Child,901 Birch Drive,Denver,CO,80202,
+Miller,Chloe,112938478,2021-08-14,Female,Child,901 Birch Drive,Denver,CO,80202,
