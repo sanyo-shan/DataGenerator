@@ -1,0 +1,100 @@
+{
+  "entities": {
+
+    "family_subscription": {
+      "fields": [
+        { "name": "last_name", "type": "string", "rules": ["same_within_group"] },
+        { "name": "first_name", "type": "string" },
+        { "name": "ssn", "type": "string", "format": "9_digit_numeric", "unique": true },
+        { "name": "dob", "type": "date" },
+        { "name": "gender", "type": "enum", "values": ["male", "female", "other"] },
+        { "name": "relationship", "type": "enum", "values": ["self", "spouse", "child", "newborn"] },
+        { "name": "address", "type": "string", "rules": ["same_within_group"] },
+        { "name": "city", "type": "string", "rules": ["same_within_group"] },
+        { "name": "state", "type": "string", "rules": ["valid_us_state", "same_within_group"] },
+        { "name": "zip_code", "type": "string", "format": "5_digit_numeric", "rules": ["same_within_group"] },
+        { "name": "medicare_member_id", "type": "string", "nullable": true }
+      ],
+
+      "entity_rules": [
+        {
+          "rule": "newborn_dob_constraint",
+          "condition": "relationship == 'newborn'",
+          "action": "dob must be within last 30 days"
+        },
+        {
+          "rule": "family_last_name_consistency",
+          "action": "all members share same last_name"
+        },
+        {
+          "rule": "family_address_consistency",
+          "action": "all members share address fields"
+        },
+        {
+          "rule": "medicare_applicability",
+          "condition": "age >= 65",
+          "action": "medicare_member_id must be generated"
+        }
+      ],
+
+      "relationships": {
+        "group_type": "family",
+        "group_size_range": { "min": 2, "max": 6 },
+        "roles_distribution": {
+          "self": 1,
+          "spouse": 1,
+          "child": "0-3",
+          "newborn": "0-1"
+        }
+      }
+    },
+
+    "individual": {
+      "fields": [
+        { "name": "last_name", "type": "string" },
+        { "name": "first_name", "type": "string" },
+        { "name": "ssn", "type": "string", "format": "9_digit_numeric", "unique": true },
+        { "name": "dob", "type": "date" },
+        { "name": "gender", "type": "enum", "values": ["male", "female", "other"] },
+        { "name": "address", "type": "string" },
+        { "name": "city", "type": "string" },
+        { "name": "state", "type": "string", "rules": ["valid_us_state"] },
+        { "name": "zip_code", "type": "string", "format": "5_digit_numeric" }
+      ],
+
+      "entity_rules": [
+        {
+          "rule": "independent_record",
+          "action": "each row is independent"
+        }
+      ]
+    },
+
+    "medicare_individual": {
+      "fields": [
+        { "name": "last_name", "type": "string" },
+        { "name": "first_name", "type": "string" },
+        { "name": "ssn", "type": "string", "format": "9_digit_numeric", "unique": true },
+        { "name": "dob", "type": "date" },
+        { "name": "gender", "type": "enum", "values": ["male", "female", "other"] },
+        { "name": "address", "type": "string" },
+        { "name": "city", "type": "string" },
+        { "name": "state", "type": "string", "rules": ["valid_us_state"] },
+        { "name": "zip_code", "type": "string", "format": "5_digit_numeric" },
+        { "name": "medicare_member_id", "type": "string" }
+      ],
+
+      "entity_rules": [
+        {
+          "rule": "age_constraint",
+          "action": "age must be >= 65"
+        },
+        {
+          "rule": "medicare_required",
+          "action": "medicare_member_id must exist"
+        }
+      ]
+    }
+
+  }
+}
