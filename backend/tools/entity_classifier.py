@@ -1,11 +1,12 @@
 # Classifying which entity the user is referring to
+from backend.agent.agents import Agent
 
-from main import user_prompt
-from agent.agents import model
+class EntityClassifier:
+    def __init__(self):
+        self.agent = Agent()
 
-def classify_entity(user_prompt):
-
-    entity_prompt = f"""
+    def classify_entity(self, user_prompt):
+        entity_prompt = f"""
     Classify the user request into one of these entity types:
 
     1. family_subscription → family/group data
@@ -14,13 +15,11 @@ def classify_entity(user_prompt):
 
     User input: "{user_prompt}"
 
-    Return ONLY JSON:
-    {
-        "entity_type": "..."
-    }
+    Return ONLY type:
+    family_subscription | individual | medicare_individual
 """
-    response = model.generate_content(entity_prompt)
-    return response
+        response = self.agent.model.generate_content(entity_prompt)
+        return response.text.strip()
 
 
 

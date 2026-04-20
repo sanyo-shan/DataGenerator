@@ -8,9 +8,10 @@ load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=api_key)
 
-def __init__(self, model_name="gemini-3-flash-preview"):
-    self.model = genai.GenerativeModel(model_name)
-    config = types.GenerateContentConfig(
+class Agent:
+    def __init__(self, model_name="gemini-3-flash-preview"):
+        self.model = genai.GenerativeModel(model_name)
+        self.config = types.GenerateContentConfig(
             thinking_config = types.ThinkingConfig(thinking_level="low")
         )
     
